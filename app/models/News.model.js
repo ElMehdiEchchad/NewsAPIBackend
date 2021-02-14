@@ -19,7 +19,7 @@ News.create = (newNews, result) => {
   });
 };
 
-News.findById = (NewsId, result) => {
+News.findById=(NewsId, result) => {
   sql.query(`SELECT * FROM news WHERE id = ${NewsId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
