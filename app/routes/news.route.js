@@ -14,6 +14,4 @@ module.exports = app => {
    //delete by id as parameter [D]
    app.delete("/news/:NewsId",News.delete);
    
-
-
 }
