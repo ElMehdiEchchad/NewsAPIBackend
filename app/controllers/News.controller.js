@@ -40,7 +40,8 @@ exports.findAll=(req,res)=>{
             });}
           
           else {
-            res.send(data);
+            const toSend=data.slice(startIndex,endIndex);
+            res.send(toSend);
           }
         });
 
