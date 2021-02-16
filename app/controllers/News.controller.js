@@ -10,10 +10,9 @@ exports.create=(req,res)=>{
   // Create news
   const news = new News({
     title: req.body.title,
-    content: req.body.content,
-    
+    content: req.body.content
   });
-
+  
   // Save news in the database
   News.create(news, (err, data) => {
     if (err)
@@ -21,19 +20,28 @@ exports.create=(req,res)=>{
         message:
           err.message || "Some error occurred while creating the news."
       });
-    else res.json(data);
+    else {
+      res.send(data);}
   });
 
 };
 //getAll
 exports.findAll=(req,res)=>{
+      const page=req.query.page;
+      const limit=req.query.limit;
+      const startIndex=(page-1)*limit;
+      const endIndex= (page)*limit;
+
         News.getAll((err, data) => {
           if (err){
             res.status(500).send({
               message:
                 err.message || "Some error occurred while retrieving news."
             });}
-          else res.json(data);
+          
+          else {
+            res.send(data);
+          }
         });
 
 };
