@@ -27,10 +27,9 @@ exports.create=(req,res)=>{
 };
 //getAll
 exports.findAll=(req,res)=>{
-      const page=req.query.page;
-      const limit=req.query.limit;
-      const startIndex=(page-1)*limit;
-      const endIndex= (page)*limit;
+  res.header("Allow-Control-Allow-Origin","*");
+  
+     
 
         News.getAll((err, data) => {
           if (err){
@@ -40,8 +39,19 @@ exports.findAll=(req,res)=>{
             });}
           
           else {
-            const toSend=data.slice(startIndex,endIndex);
-            res.send(toSend);
+            const page=req.query.page;
+            const limit=req.query.limit;
+            const startIndex=(page-1)*limit;
+            const endIndex= (page)*limit;
+            if(!(page==null)) {
+              if(!(limit==null)){
+              const toSend=data.slice(startIndex,endIndex);
+              res.send(toSend);}else
+              res.send(data);
+            }
+            else res.send(data);
+
+            
           }
         });
 

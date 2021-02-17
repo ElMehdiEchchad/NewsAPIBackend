@@ -3,10 +3,22 @@ var express= require('express');
 const bodyParser=require('body-parser');
 
 const app=express();//initializing the express app
+//Sending headers to the client and surpass the cors limitations
+app.use(function (req, res, next) {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    next();
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); //use application/json type
 
+
+//cors limitation 
 //processing the get actions
 
 app.get('/', function(req, res) {
