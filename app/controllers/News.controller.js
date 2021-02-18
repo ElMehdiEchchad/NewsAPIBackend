@@ -46,7 +46,8 @@ exports.findAll=(req,res)=>{
             if(!(page==null)) {
               if(!(limit==null)){
               const toSend=data.slice(startIndex,endIndex);
-              res.send(toSend);}else
+              res.send(toSend);}
+              else
               res.send(data);
             }
             else res.send(data);
