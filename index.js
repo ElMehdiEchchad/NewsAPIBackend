@@ -6,7 +6,7 @@ const app=express();//initializing the express app
 //Sending headers to the client and surpass the cors limitations
 app.use(function (req, res, next) {
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5050, http://localhost:8089'); //here to be added the right frontend link, for more security. 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
